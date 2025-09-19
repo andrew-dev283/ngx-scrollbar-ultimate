@@ -42,5 +42,3 @@ This library does not require third party dependencies
    </ngx-scrollbar-ultimate>
    ```
 P.S: the container must have a height in the styles
-
-Support this project: https://boosty.to/hq_dev

@@ -1,0 +1,18 @@
+{
+  "name": "ngx-scrollbar-ultimate",
+  "version": "0.0.4",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "donationUrl": "https://boosty.to/hq_dev",
+  "homepage": "https://github.com/andrew-dev283/ngx-scrollbar-ultimate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrew-dev283/ngx-scrollbar-ultimate.git"
+  }
+}

@@ -1,0 +1,19 @@
+<div
+  class="ngx-scrollbar-ultimate"
+  [class.showScroll]="showScroll()"
+  [class.hoverOnly]="visibility() === 'hover'"
+  #scrollBar>
+  <div class="content-wrapper" #contentWrapper (scroll) = "moveScroll()">
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  @if (showScroll()) {
+    <div class="scroll"
+         [style.height.px]="scrollStyleHeight()"
+         [style.top.px]="scrollStyleTop()"
+         (mousedown)="this.startDrag($event)">
+    </div>
+  }
+</div>
