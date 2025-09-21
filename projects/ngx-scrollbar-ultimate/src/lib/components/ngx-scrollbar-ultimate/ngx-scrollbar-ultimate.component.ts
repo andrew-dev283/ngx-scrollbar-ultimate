@@ -25,9 +25,11 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   readonly visibility = input<'hover' | 'always'>('always');
   protected readonly scrollBar = viewChild<ElementRef>('scrollBar');
   protected readonly contentWrapper = viewChild<ElementRef>('contentWrapper');
+  protected readonly content = viewChild<ElementRef>('content');
   protected showScroll = signal(false);
   protected scrollStyleHeight = signal(0);
   protected scrollStyleTop = signal(0);
+  private resizeObserver: ResizeObserver;
   private contentPosition = 0;
   private isDragging = false;
   private topPos: number
@@ -38,11 +40,12 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.updateScroll();
 
-    fromEvent(window, 'resize')
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
-        this.updateScroll()
-      });
+    this.resizeObserver = new ResizeObserver(() => {
+      this.updateScroll()
+      this.moveScroll();
+    });
+
+    this.resizeObserver.observe(this.content().nativeElement);
 
     fromEvent(window, 'mouseup')
       .pipe(takeUntilDestroyed(this.destroyRef))

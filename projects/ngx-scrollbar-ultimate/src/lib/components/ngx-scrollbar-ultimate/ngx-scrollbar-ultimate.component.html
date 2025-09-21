@@ -4,7 +4,7 @@
   [class.hoverOnly]="visibility() === 'hover'"
   #scrollBar>
   <div class="content-wrapper" #contentWrapper (scroll) = "moveScroll()">
-    <div class="content">
+    <div class="content"  #content>
       <ng-content></ng-content>
     </div>
   </div>
