@@ -9,7 +9,16 @@
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "donationUrl": "https://boosty.to/hq_dev",
+  "funding": [
+    {
+      "type": "crypto",
+      "url": "https://andrew-dev283.github.io/andrew-dev.github.io/"
+    },
+    {
+      "type": "boosty",
+      "url": "https://boosty.to/hq_dev"
+    }
+  ],
   "homepage": "https://github.com/andrew-dev283/ngx-scrollbar-ultimate",
   "repository": {
     "type": "git",
