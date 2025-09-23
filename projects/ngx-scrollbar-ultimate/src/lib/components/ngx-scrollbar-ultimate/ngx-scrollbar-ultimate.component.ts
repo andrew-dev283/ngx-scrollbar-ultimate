@@ -54,7 +54,10 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
       });
 
     fromEvent(window, 'mousemove')
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        filter(() => this.isDragging),
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe((event) => {
         this.scrollContent(event as MouseEvent)
       });
@@ -82,11 +85,9 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   }
 
   private scrollContent(event: MouseEvent): void {
-    if (this.isDragging === true) {
       let mouseDifferential = event.pageY - this.normalPos;
       let scrollEquivalent = mouseDifferential * (this.contentWrapper().nativeElement.scrollHeight / this.contentWrapper().nativeElement.clientHeight);
       this.contentWrapper().nativeElement.scrollTop = this.contentPosition + scrollEquivalent;
-    }
   }
 
   private updateScroll(): void {
