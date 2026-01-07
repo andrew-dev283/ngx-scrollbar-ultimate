@@ -7,7 +7,7 @@ import {
   signal,
   input,
   inject,
-  DestroyRef,
+  DestroyRef, OnDestroy,
 } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -21,7 +21,7 @@ import { filter, fromEvent } from 'rxjs';
   styleUrl: './ngx-scrollbar-ultimate.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgxScrollbarUltimateComponent implements AfterViewInit {
+export class NgxScrollbarUltimateComponent implements AfterViewInit, OnDestroy {
   readonly visibility = input<'hover' | 'always'>('always');
   protected readonly scrollBar = viewChild<ElementRef>('scrollBar');
   protected readonly contentWrapper = viewChild<ElementRef>('contentWrapper');
@@ -33,19 +33,25 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   private contentPosition = 0;
   private isDragging = false;
   private topPos: number
-  private scrollerHeight: number
   private normalPos: number
   private destroyRef = inject(DestroyRef);
+  private wrapperObserver: ResizeObserver;
 
   ngAfterViewInit(): void {
     this.updateScroll();
+    this.moveScroll();
 
     this.resizeObserver = new ResizeObserver(() => {
-      this.updateScroll()
+      this.updateScroll();
       this.moveScroll();
     });
-
     this.resizeObserver.observe(this.content().nativeElement);
+
+    this.wrapperObserver = new ResizeObserver(() => {
+      this.updateScroll();
+      this.moveScroll();
+    });
+    this.wrapperObserver.observe(this.contentWrapper().nativeElement);
 
     fromEvent(window, 'mouseup')
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -63,6 +69,11 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
       });
   }
 
+  ngOnDestroy(): void {
+    this.resizeObserver?.disconnect();
+    this.wrapperObserver.disconnect();
+  }
+
   protected startDrag(event: MouseEvent): void {
     this.normalPos = event.pageY;
     this.contentPosition = this.contentWrapper().nativeElement.scrollTop;
@@ -76,8 +87,10 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   }
 
   private calculateScrollHeight(): number {
-    let visibleRatio = this.contentWrapper().nativeElement.clientHeight / this.contentWrapper().nativeElement.scrollHeight;
-    return visibleRatio * this.scrollBar().nativeElement.clientHeight;
+    const wrapper = this.contentWrapper().nativeElement;
+    const containerHeight = wrapper.getBoundingClientRect().height;
+    const visibleRatio = containerHeight / wrapper.scrollHeight;
+    return Math.max(5, visibleRatio * containerHeight);
   }
 
   private stopDrag(): void {
@@ -91,16 +104,19 @@ export class NgxScrollbarUltimateComponent implements AfterViewInit {
   }
 
   private updateScroll(): void {
-    const contentWrapper: HTMLDivElement = this.contentWrapper().nativeElement;
-    this.scrollerHeight = this.calculateScrollHeight();
-    if (!this.showScroll() && this.scrollerHeight / contentWrapper.clientHeight < 1) {
+    const wrapper = this.contentWrapper().nativeElement;
+    const containerHeight = wrapper.getBoundingClientRect().height;
+    const scrollHeight = wrapper.scrollHeight;
+
+    const needsScrollbar = scrollHeight > containerHeight;
+
+    if (!this.showScroll() && needsScrollbar) {
       this.showScroll.set(true);
-      this.scrollerHeight = this.calculateScrollHeight();
-      this.scrollStyleHeight.set(this.scrollerHeight);
-    } else if (this.showScroll() && this.scrollerHeight / contentWrapper.clientHeight >= 1) {
+      this.scrollStyleHeight.set(this.calculateScrollHeight());
+    } else if (this.showScroll() && !needsScrollbar) {
       this.showScroll.set(false);
-    } else if (this.showScroll() && this.scrollerHeight / contentWrapper.clientHeight < 1) {
-      this.scrollStyleHeight.set(this.scrollerHeight);
+    } else if (this.showScroll() && needsScrollbar) {
+      this.scrollStyleHeight.set(this.calculateScrollHeight());
     }
   }
 }
