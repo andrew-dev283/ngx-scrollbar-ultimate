@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrollbar-ultimate",
-  "version": "20.1.0",
+  "version": "20.1.1",
   "peerDependencies": {
     "@angular/common": "^20.3.1",
     "@angular/core": "^20.3.1"
@@ -25,6 +25,7 @@
     "url": "https://github.com/andrew-dev283/ngx-scrollbar-ultimate.git"
   },
   "license": "MIT",
+  "keywords": ["angular", "scrollbar", "max-height", "signals", "rxjs"],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }

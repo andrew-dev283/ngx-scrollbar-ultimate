@@ -36,7 +36,7 @@ This library does not require third party dependencies
      </ngx-scrollbar-ultimate>
    </div>
    ```
-   IMPORTANT: scrollbar supports setting both **height** and **max-height** to its parent container
+   IMPORTANT: scrollbar supports setting **height** or **max-height** to parent container
    FULL EXAMPLE:
    ```bash
     <div class="container">
@@ -59,12 +59,12 @@ This library does not require third party dependencies
    .container {
       border: 1px solid black;
       width: 300px;
-      height: 300px;
+      height: 300px; /* or max-height */
    }
 
    .content {
-     box-sizing: border-box;
-    padding: 8px;
+      box-sizing: border-box;
+      padding: 8px;
    }
    ```
    
@@ -75,3 +75,6 @@ This library does not require third party dependencies
         your content
    </ngx-scrollbar-ultimate>
    ```
+
+## Keywords
+scrollbar, angular
