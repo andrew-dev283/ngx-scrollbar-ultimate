@@ -1,0 +1,4 @@
+{
+  "buildCommand": "ng build demo --base-href=/",
+  "outputDirectory": "dist/demo"
+}

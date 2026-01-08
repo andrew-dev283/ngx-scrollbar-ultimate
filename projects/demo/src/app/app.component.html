@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>ngx-scrollbar-ultimate</h1>
+  <p>A very lightweight, dependency-free Angular component for custom vertical scrolling.</p>
+
+  <div class="notice">
+    ✅ No layout shift<br>
+    ✅ No arrow buttons<br>
+    ✅ Supports <code>visibility="hover"</code><br>
+    ✅ Built for Angular 20+ with Signals
+  </div>
+
+  <h2>👁️ Live Demo (real component)</h2>
+
+  <!-- Always visible -->
+  <div class="demo-box">
+    <div class="demo-label">Default (always visible)</div>
+    <div class="scroll-host">
+      <ngx-scrollbar-ultimate>
+        <div class="scroll-content">
+          <p><strong>Demo content:</strong></p>
+          <p>This is the real ngx-scrollbar-ultimate component.</p>
+          <p>No third-party dependencies. Smooth scrolling.</p>
+          <p>Built with Angular Signals.</p>
+          @for (i of [].constructor(20); let idx = $index; track idx) {
+            <p>Line {{ idx + 1 }}</p>
+          }
+        </div>
+      </ngx-scrollbar-ultimate>
+    </div>
+  </div>
+
+  <!-- Hover mode -->
+  <div class="demo-box">
+    <div class="demo-label">With <code>visibility="hover"</code></div>
+    <div class="scroll-host">
+      <ngx-scrollbar-ultimate visibility="hover">
+        <div class="scroll-content">
+          <p><strong>Hover to see scrollbar</strong></p>
+          <p>Move your mouse over this box — scrollbar appears.</p>
+          <p>No text shift. Perfect alignment.</p>
+          <p>This is exactly how it works in your app.</p>
+          @for (i of [].constructor(20); let idx = $index; track idx) {
+            <p>Item {{ idx + 1 }}</p>
+          }
+        </div>
+      </ngx-scrollbar-ultimate>
+    </div>
+  </div>
+
+  <h2>🚀 Usage in Your App</h2>
+  <pre><code>&lt;div style="width: 300px; height: 300px;"&gt;
+  &lt;ngx-scrollbar-ultimate visibility="hover"&gt;
+    &lt;div style="padding: 8px;"&gt;
+      Your scrollable content...
+    &lt;/div&gt;
+  &lt;/ngx-scrollbar-ultimate&gt;
+&lt;/div&gt;</code></pre>
+
+  <h2>📺 Learn More</h2>
+  <p>Subscribe to my YouTube channel:</p>
+  <p><a href="https://www.youtube.com/@hq-development" target="_blank">YouTube: @hq-development</a></p>
+
+  <h2>🔗 Links</h2>
+  <ul>
+    <li><a href="https://github.com/andrew-dev283/ngx-scrollbar-ultimate">GitHub</a></li>
+    <li><a href="https://www.npmjs.com/package/ngx-scrollbar-ultimate">npm</a></li>
+    <li><a href="https://boosty.to/hq_dev">Support on Boosty</a></li>
+  </ul>
+</div>

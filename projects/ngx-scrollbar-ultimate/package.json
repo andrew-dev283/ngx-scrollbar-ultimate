@@ -9,6 +9,7 @@
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
+  "description": "Lightweight Angular component for custom vertical scrolling without third-party dependencies.",
   "funding": [
     {
       "type": "crypto",
@@ -25,7 +26,20 @@
     "url": "https://github.com/andrew-dev283/ngx-scrollbar-ultimate.git"
   },
   "license": "MIT",
-  "keywords": ["angular", "scrollbar", "max-height", "signals", "rxjs"],
+  "keywords": [
+    "angular",
+    "angular 20",
+    "scrollbar",
+    "custom scrollbar",
+    "vertical scrollbar",
+    "ngx scrollbar",
+    "angular component",
+    "ui component",
+    "scrollbar without dependencies",
+    "angular signals",
+    "rxjs",
+    "typescript"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }
