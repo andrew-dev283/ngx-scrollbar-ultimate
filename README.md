@@ -30,10 +30,44 @@ This library does not require third party dependencies
 3. Add to your code:
 
    ```bash
-   <ngx-scrollbar-ultimate>
+   <div class="container">
+     <ngx-scrollbar-ultimate>
         your content
-   </ngx-scrollbar-ultimate>
+     </ngx-scrollbar-ultimate>
+   </div>
    ```
+   IMPORTANT: scrollbar supports setting **height** or **max-height** to parent container
+   FULL EXAMPLE:
+   ```bash
+    <div class="container">
+      <ngx-scrollbar-ultimate>
+        <div class="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+          eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+          quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </div>
+      </ngx-scrollbar-ultimate>
+    </div>
+    ```
+   
+   ```bash
+   .container {
+      border: 1px solid black;
+      width: 300px;
+      height: 300px; /* or max-height */
+   }
+
+   .content {
+      box-sizing: border-box;
+      padding: 8px;
+   }
+   ```
+   
 4. Add visibility 'hover', if you need.
 
    ```bash
@@ -41,12 +75,18 @@ This library does not require third party dependencies
         your content
    </ngx-scrollbar-ultimate>
    ```
-P.S: the container must have a height in the styles
+
+## Demo
+[![Demo](https://img.shields.io/badge/Demo-Vercel-000000?logo=vercel&logoColor=white)](https://ngx-scrollbar-ultimate.vercel.app)
+
+## Keywords
+scrollbar, angular
+
 
 ## 💸 Support project
 
 [![Cryptodonat](https://img.shields.io/badge/Donate-Crypto-green?logo=bitcoin)](https://andrew-dev283.github.io/andrew-dev.github.io/)
 
-OR 
+OR
 
 https://boosty.to/hq_dev
