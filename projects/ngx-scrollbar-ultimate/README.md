@@ -76,6 +76,8 @@ This library does not require third party dependencies
    </ngx-scrollbar-ultimate>
    ```
 
+[![Demo](https://img.shields.io/badge/Demo-Vercel-000000?logo=vercel&logoColor=white)](https://ngx-scrollbar-ultimate.vercel.app)
+
 ## Keywords
 scrollbar, angular
 
