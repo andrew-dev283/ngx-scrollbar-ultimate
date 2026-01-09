@@ -1,6 +1,6 @@
 {
   "buildCommand": "ng build demo --base-href=/",
-  "outputDirectory": "dist/demo",
+  "outputDirectory": "dist/demo/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
