@@ -89,5 +89,5 @@ scrollbar, angular
 
 OR
 
-https://dalink.to/hq_development
-https://boosty.to/hq_dev
+- https://dalink.to/hq_development
+- https://boosty.to/hq_dev
