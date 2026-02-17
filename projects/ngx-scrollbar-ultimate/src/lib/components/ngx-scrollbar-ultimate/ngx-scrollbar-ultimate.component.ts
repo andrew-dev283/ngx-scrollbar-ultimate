@@ -23,7 +23,6 @@ import { filter, fromEvent } from 'rxjs';
 })
 export class NgxScrollbarUltimateComponent implements AfterViewInit, OnDestroy {
   readonly visibility = input<'hover' | 'always'>('always');
-  protected readonly scrollBar = viewChild<ElementRef>('scrollBar');
   protected readonly contentWrapper = viewChild<ElementRef>('contentWrapper');
   protected readonly content = viewChild<ElementRef>('content');
   protected showScroll = signal(false);

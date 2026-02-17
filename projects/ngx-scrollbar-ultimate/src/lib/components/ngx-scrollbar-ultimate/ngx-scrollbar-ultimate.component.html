@@ -2,7 +2,7 @@
   class="ngx-scrollbar-ultimate"
   [class.showScroll]="showScroll()"
   [class.hoverOnly]="visibility() === 'hover'"
-  #scrollBar>
+>
   <div class="content-wrapper" #contentWrapper (scroll) = "moveScroll()">
     <div class="content"  #content>
       <ng-content></ng-content>
